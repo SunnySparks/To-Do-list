@@ -28,11 +28,7 @@ const todoButton = document.querySelector(".todo-button");
 const todoInput = document.querySelector(".todoInput");
 
 //Event Listeners
-input.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-      fillOutList(todoTasks);
-  }
-});
+
 
 //Functions
 function searchID(id) {
@@ -55,17 +51,17 @@ function fillOutList(list) {
   const checkBox = document.createElement('input');
   checkBox.type = "checkbox";
   checkBox.classList.add('form-check-input', 'float-left');
+  listElement.appendChild(checkBox);
 
   const listText = document.createElement('span');
   listText.innerText = todoInput.value;
+  listElement.appendChild(listText);
 
   const dragIcon = document.createElement('span');
   dragIcon.innerHTML = '<i class="fas fa-ellipsis-v"></i>';
   dragIcon.classList.add('float-right');
-
-  listElement.appendChild(checkBox);
-  listElement.appendChild(listText);
-  listElement.appendChild(dragIcon);
+  listElement.appendChild(dragIcon);    
+  
   listWrapper.appendChild(listElement);
 
   const pushing = {description : todoInput.value, completed: false, index : bookObjects.length}
@@ -78,4 +74,7 @@ function fillOutList(list) {
 }
 
 
+window.onload = () => {
+  fillOutList(todoTasks);
+};
 
