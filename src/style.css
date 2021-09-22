@@ -1,12 +1,24 @@
-@font-face {
-    font-family: 'MyFont';
-    /*src: url('./my-font.woff2') format('woff2'),
-      url('./my-font.woff') format('woff');*/
-    font-weight: 600;
-    font-style: normal;
-  }
-  
+* {
+  vertical-align: baseline;
+  font-weight: inherit;
+  font-family: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  border: 0 none;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+}
 
 body {
-    /*font-family: 'MyFont';*/
-  }
+  padding: 5px;
+}
+
+.center-title {
+  padding-top: 3rem;
+  text-align: center;
+}
+
+.list-container {
+  box-shadow: 10px 12px 4px #eaeaea;
+}
