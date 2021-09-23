@@ -1,5 +1,11 @@
 import './style.css';
 import 'bootstrap';
+import { createTask } from './fillers.js';
+import { statusUpdater } from './updates.js';
+import { statusToggler }  from './updates.js';;
+export { fillOutList };
+
+
 
 class Task {
   constructor(description, index) {
@@ -9,22 +15,29 @@ class Task {
   }
 }
 
+
 const todoTasks = [
-  new Task('Do the dishes', 0, false), new Task('Do the laundry', 1, false), new Task('Walk the dog', 2, false),
+  
 ];
 
 // Selectors
-const todoInput = document.querySelector('.todoInput');
 
 // Functions
-function searchID(id) {
+let searchID = (id) => {
   return document.getElementById(id);
 }
 
-function fillOutList(list) {
+const todoInput = document.querySelector('.todoInput');
+var input = searchID("todoInput");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+      filler(todoTasks);
+  }
+});
+
+let filler = (list) => {
   const listWrapper = searchID('listWrapper');
-  list.forEach((task) => {
-    const listElement = document.createElement('li');
+  const listElement = document.createElement('li');
     listElement.classList.add('list-group-item', 'pl-5', 'pt-4', 'pb-4', 'clearfix');
 
     const checkBox = document.createElement('input');
@@ -33,7 +46,7 @@ function fillOutList(list) {
     listElement.appendChild(checkBox);
 
     const listText = document.createElement('span');
-    listText.innerText = task.description;
+    listText.innerText = todoInput.value;
     listElement.appendChild(listText);
 
     const dragIcon = document.createElement('span');
@@ -42,14 +55,25 @@ function fillOutList(list) {
     listElement.appendChild(dragIcon);
 
     listWrapper.appendChild(listElement);
+
+    console.log('it finally entered');
+    const pushing = { description: todoInput.value, completed: false, index: list.length };
+    todoTasks.push(pushing);
+   
+    todoInput.value = '';
+    console.log('list', list);
+}
+
+let fillOutList = (list) => {
+  list.forEach((task) => {
+    createTask(task);
+    console.log('task', task);
+    console.log('description', task.description);
+    filler(list);
   });
-
-  const pushing = { description: todoInput.value, completed: false, index: list.length };
-  todoTasks.push(pushing);
-
-  todoInput.value = '';
 }
 
 window.onload = () => {
   fillOutList(todoTasks);
+  statusUpdater(todoTasks);
 };
