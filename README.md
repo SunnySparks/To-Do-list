@@ -27,15 +27,24 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
  A modern web browser (Chrome, Firefox, Safari, Microsoft Edge)
 
+
 ### Usage
- Clone the project using `git clone https://github.com/SunnySparks/To-Do-list.git`
+ Clone the project using `git clone https://github.com/SunnySparks/To-Do-list.git`.
+
+ Change directory `cd` into the just created from the project.
+
+ Run `npm install`.
+
  Open with your browser the `index.html` File and start adding your tasks
  
 ## Run tests
- Clone the project using `git clone https://github.com/SunnySparks/To-Do-list.git`
- Run `npx hint .` for html linters
- Run `npx eslint .` for javascript linters
- Run `npx stylelint "**/*.{css,scss}"` for style linters
+ Clone the project using `git clone https://github.com/SunnySparks/To-Do-list.git`.
+
+ Run `npx hint .` for html linters.
+
+ Run `npx eslint .` for javascript linters.
+
+ Run `npx stylelint "**/*.{css,scss}"` for style linters.
  
 ## Deployment
  Clone this repository in one of yours
@@ -46,7 +55,7 @@ To get a local copy up and running follow these simple example steps.
  After some time your website version should be live and public
 
 
-## Authors
+## Author
 
 👤 **Sunny Díaz**
 

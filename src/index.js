@@ -1,30 +1,23 @@
 import './style.css';
 import 'bootstrap';
 
+
+class Task {
+  constructor(description, index) {
+    this.description = description;
+    this.index = index;
+    this.completed = false;
+  }
+}
+
 let todoTasks = [
-  {
-    description: 'Do the dishes / Sample element',
-    completed: false,
-    index: 0,
-  },
-  {
-    description: 'Do the laundry / Sample element',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'Walk the dog / Sample element',
-    completed: false,
-    index: 2,
-  },
+  new Task('Do the dishes', 0, false), new Task('Do the laundry', 1, false), new Task ('Walk the dog', 2, false)
 ];
 
-// elements
 
 // Selectors
 const todoInput = document.querySelector('.todoInput');
 
-// Event Listeners
 
 // Functions
 function searchID(id) {
@@ -32,10 +25,9 @@ function searchID(id) {
 }
 
 function fillOutList(list) {
-  list.sort((a, b) => a.index - b.index);
-
+  //console.log(list);
   const listWrapper = searchID('listWrapper');
-
+  list.forEach((task) => {
   const listElement = document.createElement('li');
   listElement.classList.add('list-group-item', 'pl-5', 'pt-4', 'pb-4', 'clearfix');
 
@@ -45,7 +37,8 @@ function fillOutList(list) {
   listElement.appendChild(checkBox);
 
   const listText = document.createElement('span');
-  listText.innerText = todoInput.value;
+  //listText.innerText = todoInput.value;
+  listText.innerText = task.description;
   listElement.appendChild(listText);
 
   const dragIcon = document.createElement('span');
@@ -54,14 +47,15 @@ function fillOutList(list) {
   listElement.appendChild(dragIcon);
 
   listWrapper.appendChild(listElement);
+  });
 
   const pushing = { description: todoInput.value, completed: false, index: list.length };
-  list.push(pushing);
+  const result = todoTasks.push(pushing);
 
-  todoTasks = list;
-
+  console.log(todoTasks);
   todoInput.value = '';
 }
+
 
 window.onload = () => {
   fillOutList(todoTasks);
