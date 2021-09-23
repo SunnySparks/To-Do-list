@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <title>To-do List</title>
+</head>
+<body>
+    <section class="container">
+        <h1 class="center-title">To-Do List</h1>
+        <div class="list-container list-group">
+            <div class="list-head list-group-item p-4 bg-light clearfix">
+                <span class="list-title float-left">today's To-Do</span>
+                <span class="text-right float-right"><i class="fas fa-sync-alt"></i></span>
+            </div>
+            <div class="list-group-item p-3 bg-white">
+                <div class="form-group mb-0 col-lg-12 p-1">
+                    <input type="text" class="form-control border-0 todoInput" id="todoInput" placeholder="Add to your list...">
+                </div>
+            </div>
+                <ul class="w-100 list-group bg-white" id="listWrapper">
+                </ul>
+            <div class="list-group-item p-4 bg-light text-center">
+                <span class="">Clear completed</span>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
