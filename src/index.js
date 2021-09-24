@@ -1,25 +1,23 @@
 import './style.css';
 import 'bootstrap';
+import statusToggler from './updates.js';
 
 class Task {
-  constructor(description, index) {
+  constructor(description, completed = false, index) {
     this.description = description;
+    this.completed = completed;
     this.index = index;
-    this.completed = false;
   }
 }
 
-const todoTasks = [
-  new Task('Do the dishes', 0, false), new Task('Do the laundry', 1, false), new Task('Walk the dog', 2, false),
+let todoTasks = [
+  new Task('Do the dishes', false, 0),
+  new Task('Do the laundry', false, 1),
+  new Task('Walk the dog', false, 2),
 ];
 
-// Selectors
-const todoInput = document.querySelector('.todoInput');
-
 // Functions
-function searchID(id) {
-  return document.getElementById(id);
-}
+const searchID = (id) => document.getElementById(id);
 
 function fillOutList(list) {
   const listWrapper = searchID('listWrapper');
@@ -31,6 +29,7 @@ function fillOutList(list) {
     checkBox.type = 'checkbox';
     checkBox.classList.add('form-check-input', 'float-left');
     listElement.appendChild(checkBox);
+    statusToggler(checkBox, list);
 
     const listText = document.createElement('span');
     listText.innerText = task.description;
@@ -42,14 +41,17 @@ function fillOutList(list) {
     listElement.appendChild(dragIcon);
 
     listWrapper.appendChild(listElement);
+
+    const pushing = { description: task.description, completed: false, index: task.index };
+    todoTasks.push(pushing);
+    localStorage.setItem('pushing', JSON.stringify(todoTasks));
   });
-
-  const pushing = { description: todoInput.value, completed: false, index: list.length };
-  todoTasks.push(pushing);
-
-  todoInput.value = '';
 }
 
 window.onload = () => {
+  const retrieve = JSON.parse(localStorage.getItem('pushing'));
+  if (retrieve !== null) {
+    todoTasks = retrieve;
+  }
   fillOutList(todoTasks);
 };
