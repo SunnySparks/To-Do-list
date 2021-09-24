@@ -11,6 +11,5 @@ function createTask(list, input){
         }
     }
     const new1 = new Task(input, false);
-    //console.log('this is the task', new1);
     return new1
 }
