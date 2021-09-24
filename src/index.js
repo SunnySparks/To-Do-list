@@ -3,10 +3,10 @@ import 'bootstrap';
 import statusToggler from './updates.js';
 
 class Task {
-  constructor(description, index, completed = false) {
+  constructor(description, completed = false, index) {
     this.description = description;
-    this.index = index;
     this.completed = completed;
+    this.index = index;
   }
 }
 
@@ -20,7 +20,6 @@ let todoTasks = [
 const searchID = (id) => document.getElementById(id);
 
 function fillOutList(list) {
-  console.log(list, typeof list);
   const listWrapper = searchID('listWrapper');
   list.forEach((task) => {
     const listElement = document.createElement('li');
