@@ -67,9 +67,9 @@ input.addEventListener('keyup', (event) => {
 function fillOutList(list) {
   const listWrapper = searchID('listWrapper');
   for (let i = 0; i < list.length; i += 1) {
-    //console.log('indexof', list.indexOf(list[i]));
+    // console.log('indexof', list.indexOf(list[i]));
     console.log('hard index', list[i].index);
-    list[i].index = list.indexOf(list[i])
+    list[i].index = list.indexOf(list[i]);
     console.log('After', list[i].index);
     localStorage.setItem('pushing', JSON.stringify(list));
     const listElement = document.createElement('li');
