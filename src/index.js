@@ -3,6 +3,7 @@ import 'bootstrap';
 import statusToggler from './updates.js';
 import { createTask, taskEdit, clicky } from './add_remove.js';
 import { indexOf } from 'lodash';
+export { fillOutList };
 
 
 let todoTasks = [
@@ -46,12 +47,15 @@ function filler(list){
     trashcan.classList.add('trashcan', 'float-right', 'pl-3', 'pr-3', 'text-danger');
     listElement.appendChild(trashcan);
 
+
     const dragIcon = document.createElement('span');
     dragIcon.innerHTML = '<i class="fas fa-ellipsis-v"></i>';
     dragIcon.classList.add('float-right', 'pl-3', 'pr-3');
+    listElement.appendChild(dragIcon);
 
     list.forEach(element => {
       taskEdit(listText, list, element);
+      clicky(trashcan, list, element);
     });
 
     listWrapper.appendChild(listElement);
@@ -65,7 +69,8 @@ function fillOutList(list) {
   const listWrapper = searchID('listWrapper');
   let taskFiller = createTask(list, todoInput.value);
   for (let i = 0; i < list.length; i += 1) {
-    
+    list[i].index = list.indexOf(list[i]);
+    localStorage.setItem('pushing', JSON.stringify(list));
     const listElement = document.createElement('li');
     listElement.classList.add('list-group-item', 'pl-5', 'pt-4', 'pb-4', 'clearfix');
 

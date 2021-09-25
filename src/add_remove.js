@@ -32,10 +32,17 @@ function taskEdit(task, list, element) {
 function clicky(element, list, index) {
     element.addEventListener("click", function(event){
         console.log("click");
-        console.log(list);
-        console.log(index.index);
-        list = list.filter((el) => el.index != index.index);
-        console.log('deleted', list);
+        //console.log(list);
+        //console.log(index.index);
+        //console.log(index.description);
+        //console.log('indexOf', list.indexOf(index));
+       list = list.filter((el) => el.index != index.index);
         localStorage.setItem('pushing', JSON.stringify(list));
+        //console.log('reasigned values', list);
+        //console.log('deleted', list);
+        //console.log('deleted', filtered);
+        parent = element.parentElement;
+        //console.log(parent);
+        parent.classList.add('d-none');
     });
 }
