@@ -20,8 +20,6 @@ function taskEdit(task, list, element) {
     });
         task.addEventListener("keyup", function(event) {
         if (event.keyCode === 13) {
-            //console.log("enter description", list.description);
-            //console.log("enter value", task.value);
             console.log("enter");
             localStorage.setItem('pushing', JSON.stringify(list));
           }
@@ -31,18 +29,18 @@ function taskEdit(task, list, element) {
 
 function clicky(element, list, index) {
     element.addEventListener("click", function(event){
-        console.log("click");
-        //console.log(list);
-        //console.log(index.index);
-        //console.log(index.description);
-        //console.log('indexOf', list.indexOf(index));
-       list = list.filter((el) => el.index != index.index);
+        list = list.filter((el) => el.index != index.index);
+        console.log('deleted', list);
         localStorage.setItem('pushing', JSON.stringify(list));
-        //console.log('reasigned values', list);
-        //console.log('deleted', list);
-        //console.log('deleted', filtered);
-        parent = element.parentElement;
-        //console.log(parent);
-        parent.classList.add('d-none');
+        remove();
+        const obtain = JSON.parse(localStorage.getItem('pushing'));
+        fillOutList(obtain);
     });
+}
+
+function remove(){
+    var container = document.getElementById("listWrapper");
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
 }

@@ -6,7 +6,7 @@ import { indexOf } from 'lodash';
 export { fillOutList };
 
 
-let todoTasks = [
+export let todoTasks = [
 
 ];
 
@@ -18,6 +18,7 @@ var input = searchID("todoInput");
 input.addEventListener("keyup", function(event) {
   if (event.keyCode === 13 && todoInput.value != '') {
     filler(todoTasks);
+    input.value = "";
   }
 });
 
@@ -69,8 +70,6 @@ function fillOutList(list) {
   const listWrapper = searchID('listWrapper');
   let taskFiller = createTask(list, todoInput.value);
   for (let i = 0; i < list.length; i += 1) {
-    list[i].index = list.indexOf(list[i]);
-    localStorage.setItem('pushing', JSON.stringify(list));
     const listElement = document.createElement('li');
     listElement.classList.add('list-group-item', 'pl-5', 'pt-4', 'pb-4', 'clearfix');
 
