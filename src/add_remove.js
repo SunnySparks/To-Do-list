@@ -30,17 +30,12 @@ function taskEdit(task, list, element) {
 function clicky(element, list, index) {
     element.addEventListener("click", function(event){
         list = list.filter((el) => el.index != index.index);
-        console.log('deleted', list);
         localStorage.setItem('pushing', JSON.stringify(list));
-        remove();
+        var container = document.getElementById("listWrapper");
+        while (container.firstChild) {
+            container.removeChild(container.firstChild);
+        }
         const obtain = JSON.parse(localStorage.getItem('pushing'));
         fillOutList(obtain);
     });
-}
-
-function remove(){
-    var container = document.getElementById("listWrapper");
-    while (container.firstChild) {
-        container.removeChild(container.firstChild);
-    }
 }
