@@ -22,3 +22,7 @@ body {
 .list-container {
   box-shadow: 10px 12px 4px #eaeaea;
 }
+
+.trashcan {
+  font-size: large;
+}
