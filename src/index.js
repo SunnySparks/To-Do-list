@@ -10,7 +10,6 @@ let todoTasks = [
 
 ];
 
-// Functions
 const searchID = (id) => document.getElementById(id);
 const deleteButton = searchID('delete-all');
 
