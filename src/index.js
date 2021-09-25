@@ -1,7 +1,7 @@
 import './style.css';
 import 'bootstrap';
 import statusToggler from './updates.js';
-import { createTask, taskEdit, clicky } from './add_remove.js';
+import { createTask, taskEdit, clicky, deleteCompleted } from './add_remove.js';
 import { indexOf } from 'lodash';
 export { fillOutList };
 
@@ -10,8 +10,12 @@ export let todoTasks = [
 
 ];
 
+
 // Functions
 const searchID = (id) => document.getElementById(id);
+var deleteButton = searchID("delete-all");
+
+
 
 const todoInput = document.querySelector('.todoInput');
 var input = searchID("todoInput");
@@ -57,6 +61,7 @@ function filler(list){
     list.forEach(element => {
       taskEdit(listText, list, element);
       clicky(trashcan, list, element);
+      deleteCompleted(deleteButton, list, element);
     });
 
     listWrapper.appendChild(listElement);
@@ -76,6 +81,9 @@ function fillOutList(list) {
     const checkBox = document.createElement('input');
     checkBox.type = 'checkbox';
     checkBox.classList.add('form-check-input', 'float-left');
+    if(list[i].completed == true) {
+      checkBox.checked = true;
+    }
     listElement.appendChild(checkBox);
     statusToggler(checkBox, list);
 
@@ -103,8 +111,12 @@ function fillOutList(list) {
 
     var description = listText.innerText;
     var currentIndex = i;
+    deleteCompleted(deleteButton, list, list[i]);
   }
 }
+
+
+
 
 
 window.onload = () => {

@@ -1,5 +1,6 @@
 import { fillOutList } from './index.js';
-export { createTask, taskEdit, clicky };
+export { createTask, taskEdit, clicky, deleteCompleted };
+
 
 
 function createTask(list, input){
@@ -30,12 +31,31 @@ function taskEdit(task, list, element) {
 function clicky(element, list, index) {
     element.addEventListener("click", function(event){
         list = list.filter((el) => el.index != index.index);
-        localStorage.setItem('pushing', JSON.stringify(list));
-        var container = document.getElementById("listWrapper");
-        while (container.firstChild) {
-            container.removeChild(container.firstChild);
-        }
-        const obtain = JSON.parse(localStorage.getItem('pushing'));
-        fillOutList(obtain);
+        filter(list);
+
     });
+}
+
+function deleteCompleted(button, list, index){
+    button.addEventListener("click", function(event){
+        //console.log("deleteAll");
+        for (let i = 0; i < list.length; i += 1) {
+            console.log("completed", list[i].completed);
+        }
+        console.log(index.completed);
+            console.log('before', list);
+            list = list.filter((el) => el.completed != true);
+
+            filter(list);
+    });
+}
+
+function filter(list){
+    localStorage.setItem('pushing', JSON.stringify(list));
+    var container = document.getElementById("listWrapper");
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+    const obtain = JSON.parse(localStorage.getItem('pushing'));
+    fillOutList(obtain);
 }
