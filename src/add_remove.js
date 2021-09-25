@@ -6,7 +6,7 @@ function createTask(list, input) {
     constructor(description, completed, index) {
       this.description = description;
       this.completed = false;
-      this.index = index;
+      this.index = list.length;
     }
   }
   const new1 = new Task(input, false);
@@ -19,7 +19,6 @@ function taskEdit(task, list, element) {
   });
   task.addEventListener('keyup', (event) => {
     if (event.keyCode === 13) {
-      console.log('enter');
       localStorage.setItem('pushing', JSON.stringify(list));
     }
   });
@@ -44,12 +43,8 @@ function clicky(element, list, index) {
 
 function deleteCompleted(button, list, index) {
   button.addEventListener('click', () => {
-    // console.log("deleteAll");
     for (let i = 0; i < list.length; i += 1) {
-      console.log('completed', list[i].completed);
     }
-    console.log(index.completed);
-    console.log('before', list);
     list = list.filter((el) => el.completed !== true);
 
     filter(list);
