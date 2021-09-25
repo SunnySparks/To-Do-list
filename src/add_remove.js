@@ -3,7 +3,7 @@ import fillOutList from './index.js';
 
 function createTask(list, input) {
   class Task {
-    constructor(description, completed, index) {
+    constructor(description) {
       this.description = description;
       this.completed = false;
       this.index = list.length;
@@ -41,10 +41,8 @@ function clicky(element, list, index) {
   });
 }
 
-function deleteCompleted(button, list, index) {
+function deleteCompleted(button, list) {
   button.addEventListener('click', () => {
-    for (let i = 0; i < list.length; i += 1) {
-    }
     list = list.filter((el) => el.completed !== true);
 
     filter(list);
