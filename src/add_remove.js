@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import fillOutList from './index.js';
+//import fillOutList from './index.js';
 
 function createTask(list, input) {
   class Task {
@@ -49,6 +49,7 @@ function deleteCompleted(button, list) {
   });
 }
 
-export {
-  createTask, taskEdit, clicky, deleteCompleted, filter,
-};
+module.exports =   createTask, taskEdit, clicky, deleteCompleted, filter;
+//export {
+//  createTask, taskEdit, clicky, deleteCompleted, filter
+//};
