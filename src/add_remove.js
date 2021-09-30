@@ -50,5 +50,5 @@ function deleteCompleted(button, list) {
 }
 
 export {
-  createTask, taskEdit, clicky, deleteCompleted,
+  createTask, taskEdit, clicky, deleteCompleted, filter,
 };
